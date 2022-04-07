@@ -6,41 +6,42 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit{
   count = 0;
-  nome = 'Ivonaldo Junior Escobar Soares';
-  text = '';
+  nome = "Xavier Hernandez i Creus";
+  text = "";
 
-  pessoas = [
-    {
-      firstName: '',
-      lastName: '',
-      age: 0
-    },
-  ];
+  pessoas = [{
+    nome: 'Luke',
+    sobrenome: 'Cage'
+  },
+  {
+    nome: 'Ororo',
+    sobrenome: 'Munroe'
+  },
+  {
+    nome: 'Jessica',
+    sobrenome: 'Jones'
+  },
+  {
+    nome: 'Eric',
+    sobrenome: 'Brooks'
+  }];
 
-  constructor(private peopleService: PeopleService) {
+
+  constructor(){
 
   }
-
-  ngOnInit() {
-    this.getPeople();
-    let interval = setInterval(() => {
-      this.count++;
-      if(this.count === 10) {
-        clearInterval(interval);
-      }
-    }, 1000)
+  ngOnInit(): void {
+      let interval = setInterval(() =>{
+        this.count++;
+        if(this.count === 10){
+          clearInterval(interval);
+        }
+      }, 1000)
   }
 
-  clicou(nome: string): void {
-    console.log('Clicou em min', nome)
+  clicar(nome:string): void{
+    console.log(nome, ' clicou');
   }
-
-  getPeople() {
-    this.peopleService.getPeople().subscribe(people => {
-      this.pessoas = people;
-    })
-  }
-
 }
